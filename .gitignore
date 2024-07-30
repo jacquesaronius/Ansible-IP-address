@@ -1,0 +1,4 @@
+hosts
+/.vscode
+*.log
+*artifact*

@@ -1,0 +1,16 @@
+---
+- name: Compare IP address
+  hosts: all
+  vars:
+    - regex: '^192'
+    - found: false
+  tasks:
+    - name: Check IP address
+      set_fact:
+        found: true
+      with_items: "{{ ansible_all_ipv4_addresses }}"
+      when: item is match(regex)
+
+    - name: Print result  
+      debug:
+        msg: "IP address found: {{ found }}"
